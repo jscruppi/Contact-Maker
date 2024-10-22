@@ -1,4 +1,4 @@
-# Contact-Maker App
+# Contact-Maker
 
 A program designed to take the input of a google form and convert the responses into a downloadable contact.vcf file that can easily be imported to a contact application
 
