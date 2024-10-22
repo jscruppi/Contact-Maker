@@ -5,8 +5,8 @@ A program designed to take the input of a google form and convert the responses 
 ## Instalation
 
 1. Before trying to download this program, a few prerequisites are required:
-   -python          (any version newer than 3.0 should suffice)
-   -git             (any version)
+- python          (any version newer than 3.0 should suffice)
+- git             (any version)
 
    To check for these porgrams, type the following commands into your terminal:
 
@@ -31,9 +31,9 @@ Contact-Maker was designed with the use of a google form in mind. Chapter member
 - Last Name
 - Birthday (YYYY-MM-DD)
 - Phone Number (###-###-####)
-- Link to a photo (optional)
+- Link to a photo (_optional_)
 
-In this current version of Contact-Maker, any phone numbers or birthdays not entered in the proper format CANNOT be handeled. So if even one of the users enters their information in a different format, the entire file will be UNUSABLE.
+In this current version of Contact-Maker, any phone numbers or birthdays not entered in the proper format _CANNOT_ be handeled. So if even one of the users enters their information in a different format, the entire file will be _UNUSABLE_. The order of the questions MUST match the order listed above, or the program could fail.
 
 That being said, Contact-Maker requires this information to be stored in a .csv file. This can be done by downloading the google sheet linked to the google form as a .csv file.
 Note that the first kept record in a google form is the response time, Contact-Maker accounts for this in the code, so any attempts to remove the response time column will brick the program.
@@ -46,4 +46,4 @@ Contact-Maker will write the results of the program to a .vcf file named "output
 
 ## Contributing
 
-For any ATOs who wish to contribute to this code in the future, I don't mind at all! Just make a branch with your new features ,push them to the repo, and submite a pull request!
+For any ATOs who wish to contribute to this code in the future, I don't mind at all! Just make a branch with your new features , push them to the repo, and submit a pull request!
