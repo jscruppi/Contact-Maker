@@ -10,7 +10,7 @@ Authors: Joe Scruppi
 
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
-import scripts as s
+from scripts import *
 
 class Window:
     def __init__(self):
@@ -22,7 +22,7 @@ class Window:
 
         #initilize the empty fields that store filepath info
         self.input_file_path = ''
-        self.output_file_path = 'output.vcf'
+        self.output_file_path = 'output-gui.vcf'
 
         #create the buttons and labels
         self.open_button = tk.Button(self.root, text='Select .csv file', command=self.setInputFilePath)
@@ -49,6 +49,10 @@ class Window:
         if self.input_file_path:
             #display input path on the window screen
             self.input_file_label.config(text=f'{self.input_file_path}')
+
+            #enable genFile button to function now that we have the loaded path
+            #the lambda call makes it so command will only activate once the button is clicked
+            self.gen_button.config(command= lambda: genFile(self.output_file_path, self.input_file_path))
         else:
             messagebox.showwarning("No file Selected", "You did not choose the CSV file")
 

@@ -3,7 +3,7 @@
 Script to make the contact .vcf file
 
 
-Last Updated: October 21, 2024
+Last Updated: October 22, 2024
 Authors: Joe Scruppi
 
 """
