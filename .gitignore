@@ -1,0 +1,5 @@
+#ignore the .vcf file 
+*.vcf
+
+#ignore the input file
+*.csv
