@@ -10,6 +10,18 @@ Authors: Joe Scruppi
 
 import csv
 import sys
+import re
+
+def isFormatted(c):
+    date_pattern = r'\d{4}-\d{2}-\d{2}'
+    number_pattern = r'\d{3}-\d{3}-\d{4}'
+
+    #check to make sure both birthday and number match required pattern
+    if re.fullmatch(date_pattern, c[3]) and re.fullmatch(number_pattern, c[4]):
+        return True
+    else:
+        print(f"{c[2]}, {c[1]}'s information is unformattted. Will be excluded")
+        return False
 
 def addContact(f, c):
     #write the header
@@ -39,8 +51,11 @@ def main():
         for row in reader:
             #split each current contact row into their attributes
             contact = list(row.values())
-            #write the data to the file
-            addContact(out_file, contact)
+
+            #check for formatting issues
+            if isFormatted(contact):
+                #write the data to the file
+                addContact(out_file, contact)
 
 #when script is run
 if __name__ == '__main__':

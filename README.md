@@ -33,7 +33,7 @@ Contact-Maker was designed with the use of a google form in mind. Chapter member
 - Phone Number (###-###-####)
 - Link to a photo (_optional_)
 
-In this current version of Contact-Maker, any phone numbers or birthdays not entered in the proper format _CANNOT_ be handeled. So if even one of the users enters their information in a different format, the entire file will be _UNUSABLE_. The order of the questions MUST match the order listed above, or the program could fail.
+In this current version of Contact-Maker, any phone numbers or birthdays not entered in the proper format can be handeled. Any Birthdays or phone numbers not entered in the correct format will be omitted from the output _ENTIRELY_. The order of the questions MUST match the order listed above, or the program could fail.
 
 That being said, Contact-Maker requires this information to be stored in a .csv file. This can be done by downloading the google sheet linked to the google form as a .csv file.
 Note that the first kept record in a google form is the response time, Contact-Maker accounts for this in the code, so any attempts to remove the response time column will brick the program.
