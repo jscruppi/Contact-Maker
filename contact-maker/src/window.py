@@ -10,7 +10,8 @@ Authors: Joe Scruppi
 
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
-from scripts import *
+from .contact_process import *
+import sys
 
 class Window:
     def __init__(self):
@@ -35,6 +36,10 @@ class Window:
         self.gen_button.pack()
         self.output_file_label = tk.Label(self.root, text=self.output_file_path)
         self.output_file_label.pack()
+
+        #set the icon image
+        icon_image = sys.path[0] + '/data/laptop.png'
+        self.root.iconphoto(False, tk.PhotoImage(file=icon_image))
 
 
     def getInputFile(self):

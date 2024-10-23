@@ -8,7 +8,7 @@ Authors: Joe Scruppi
 
 """
 
-import window
+from src import window
 
 def main():
 

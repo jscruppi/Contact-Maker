@@ -6,3 +6,6 @@
 
 #ignore the pychace folder
 __pycache__/
+
+#ignore the out folder
+out/
