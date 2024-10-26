@@ -32,14 +32,8 @@ class Window:
         self.input_file_label = tk.Label(self.root, text='')
         self.input_file_label.pack(pady=30)
 
-        #make a text box where user can enter new output file name
-        self.output_filename_entry = tk.Entry(self.root, width=20)
-        self.output_filename_entry.pack()
-
         self.gen_button = tk.Button(self.root, text='Generate Contact File')#command=s.genFile(self.output_file_path,  self.input_file_path))
         self.gen_button.pack()
-        self.output_file_label = tk.Label(self.root, text=self.shorten_path(self.output_file_path))
-        self.output_file_label.pack()
 
         #set the icon image
         icon_image = sys.path[0] + '/data/laptop.png'
@@ -51,11 +45,10 @@ class Window:
     
     def getOutputFile(self):
         
-        #first check to see if anything is in the entry field
-        entry = self.output_filename_entry.get()
-        if(entry != ''):
-            self.output_file_path = entry
-            self.output_file_label.config(text=entry)
+        #prompt user to create the output filepath
+        entry = tk.filedialog.asksaveasfilename(defaultextension='.vcf',
+                                                title='Save As')
+        self.output_file_path = entry
 
         return self.output_file_path 
 
