@@ -32,6 +32,9 @@ class Window:
         self.input_file_label = tk.Label(self.root, text='')
         self.input_file_label.pack(pady=30)
 
+        #make a text box where user can enter new output file name
+        self.output_filename_entry = tk.Entry(self.root, width=20)
+        self.output_filename_entry.pack()
 
         self.gen_button = tk.Button(self.root, text='Generate Contact File')#command=s.genFile(self.output_file_path,  self.input_file_path))
         self.gen_button.pack()
@@ -47,8 +50,15 @@ class Window:
         return self.input_file_path
     
     def getOutputFile(self):
-        return self.output_file_path
-    
+        
+        #first check to see if anything is in the entry field
+        entry = self.output_filename_entry.get()
+        if(entry != ''):
+            self.output_file_path = entry
+            self.output_file_label.config(text=entry)
+
+        return self.output_file_path 
+
     def setInputFilePath(self):
     
         self.input_file_path = filedialog.askopenfilename()
@@ -58,7 +68,7 @@ class Window:
 
             #enable genFile button to function now that we have the loaded path
             #the lambda call makes it so command will only activate once the button is clicked
-            self.gen_button.config(command= lambda: genFile(self.output_file_path, self.input_file_path))
+            self.gen_button.config(command= lambda: genFile(self.getOutputFile(), self.input_file_path))
         else:
             messagebox.showwarning("No file Selected", "You did not choose the CSV file")
 
