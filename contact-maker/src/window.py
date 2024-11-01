@@ -24,7 +24,7 @@ class Window:
 
         #initilize the empty fields that store filepath info
         self.input_file_path = ''
-        self.output_file_path = 'output-gui.vcf'
+        self.output_file_path = ''
 
         #create the buttons and labels
         self.open_button = tk.Button(self.root, text='Select .csv file', command=self.setInputFilePath)
@@ -65,6 +65,20 @@ class Window:
         else:
             messagebox.showwarning("No file Selected", "You did not choose the CSV file")
 
+        #see if any names were ommitted
+        if(self.output_file_path):
+            with open(sys.path[0] + '/data/omit_names.txt', mode='r') as omit_log:
+                content = omit_log.readlines()
+
+                if(len(content) != 0):
+                    self.showOmitLog(content)
+
+                omit_log.close()
+
+    def showOmitLog(self, omit_log):
+
+        tk.messagebox.showinfo('Notice', 'Names have been omitted from the output') 
+    
     def shorten_path(self, path, num_parts=2):
         parts = path.split(os.sep)
         shortened = os.sep.join(parts[-num_parts:])

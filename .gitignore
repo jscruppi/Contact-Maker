@@ -4,6 +4,9 @@
 #ignore the input file
 *.csv
 
+#ignore the log file
+omit_names.txt
+
 #ignore the pychace folder
 __pycache__/
 

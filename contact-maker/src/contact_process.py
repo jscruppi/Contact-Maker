@@ -10,6 +10,8 @@ Authors: Joe Scruppi
 
 import csv
 import re
+import sys
+import data
 
 def isFormatted(c):
     date_pattern = r'\d{4}-\d{2}-\d{2}'
@@ -42,6 +44,10 @@ def addContact(f, c):
 def genFile(vcf_file, csv_file):
     #create vcf file
     out_file = open(vcf_file, mode='w')
+    
+    #blank list to store names of unformatted Responses
+    #will return this to the main window for it to then display
+    omit_names = []
 
     #read through the input csv file
     with open(csv_file, mode='r') as input_file:
@@ -55,7 +61,22 @@ def genFile(vcf_file, csv_file):
             if isFormatted(contact):
                 #write the data to the file
                 addContact(out_file, contact)
+            else:
+                omit_names.append(f'{contact[2]}, {contact[1]}')
+        
+        #print('testing...')
+        #print(sys.path[0])
+        #print(sys.path[1])
 
+        #print(data.data_dir)
+        #write omit_names to file so window can read them
+        with open(sys.path[0] + '/data/omit_names.txt', mode='w') as omit_log:
+            for x in range(len(omit_names)):
+                omit_log.write(f'{omit_names[x]}\n')
+
+    omit_log.close()
+    input_file.close()
+    out_file.close()
 
 
 
