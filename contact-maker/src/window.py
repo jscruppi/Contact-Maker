@@ -26,6 +26,9 @@ class Window:
         self.input_file_path = ''
         self.output_file_path = ''
 
+        #output file generation flag
+        self.is_file_generated = False
+
         #create the buttons and labels
         self.open_button = tk.Button(self.root, text='Select .csv file', command=self.setInputFilePath)
         self.open_button.pack()
@@ -61,11 +64,17 @@ class Window:
 
             #enable genFile button to function now that we have the loaded path
             #the lambda call makes it so command will only activate once the button is clicked
-            self.gen_button.config(command= lambda: genFile(self.getOutputFile(), self.input_file_path))
+            self.gen_button.config(command= lambda: self.createOutput())
         else:
             messagebox.showwarning("No file Selected", "You did not choose the CSV file")
 
-        #see if any names were ommitted
+    #called whenever genFile is preshed
+    #will genFile() and output a messagebox of the omitted names
+    def createOutput(self):
+        
+        genFile(self.getOutputFile(), self.input_file_path)
+
+       #see if any names were ommitted
         if(self.output_file_path):
             with open(sys.path[0] + '/data/omit_names.txt', mode='r') as omit_log:
                 content = omit_log.readlines()
@@ -75,9 +84,17 @@ class Window:
 
                 omit_log.close()
 
-    def showOmitLog(self, omit_log):
 
-        tk.messagebox.showinfo('Notice', 'Names have been omitted from the output') 
+        self.is_file_generated = True
+
+    def showOmitLog(self, omit_log):
+        #omit log comes in as a list of strings
+        #need to change to all one string
+        output = ''
+        for x in range(len(omit_log)):
+            output += omit_log[x]
+
+        tk.messagebox.showinfo('Omitted Names', output)
     
     def shorten_path(self, path, num_parts=2):
         parts = path.split(os.sep)

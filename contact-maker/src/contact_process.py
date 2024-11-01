@@ -63,12 +63,7 @@ def genFile(vcf_file, csv_file):
                 addContact(out_file, contact)
             else:
                 omit_names.append(f'{contact[2]}, {contact[1]}')
-        
-        #print('testing...')
-        #print(sys.path[0])
-        #print(sys.path[1])
 
-        #print(data.data_dir)
         #write omit_names to file so window can read them
         with open(sys.path[0] + '/data/omit_names.txt', mode='w') as omit_log:
             for x in range(len(omit_names)):
