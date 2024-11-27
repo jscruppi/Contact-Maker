@@ -3,7 +3,6 @@
 Scripts for the Contact-Maker Application
 IE - The methods that make the Contact-Maker work but don't necessarily belong to the Window / Main files
 
-Last Updated: Oct 22, 2024
 Authors: Joe Scruppi
 
 """
@@ -11,9 +10,9 @@ Authors: Joe Scruppi
 import csv
 import re
 import sys
-import data
 
-def isFormatted(c):
+#Checks if the contact -c is formatted correctly for .vcf
+def isFormatted(c) -> bool:
     date_pattern = r'\d{4}-\d{2}-\d{2}'
     number_pattern = r'\d{3}-\d{3}-\d{4}'
 
@@ -24,8 +23,8 @@ def isFormatted(c):
         print(f"{c[2]}, {c[1]}'s information is unformattted. Will be excluded")
         return False
 
-
-def addContact(f, c):
+#Writes a contact -c to the file -f
+def addContact(f, c) -> None:
     #write the header
     f.write('BEGIN:VCARD\n')
     f.write('VERSION:3.0\n')
@@ -41,7 +40,8 @@ def addContact(f, c):
     f.write('END:VCARD\n')
     f.write('\n')
 
-def genFile(vcf_file, csv_file):
+#Writes a .vcf file based on the .csv file records
+def genFile(vcf_file, csv_file) -> None:
     #create vcf file
     out_file = open(vcf_file, mode='w')
     

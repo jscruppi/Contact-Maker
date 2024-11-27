@@ -3,7 +3,6 @@
 Window Class for Gui implementation of Contact-Maker
 To be implemented with the tkinter module
 
-Last Updated: October 22, 2024
 Authors: Joe Scruppi
 
 """
@@ -13,12 +12,13 @@ from tkinter import ttk, filedialog, messagebox
 from .contact_process import *
 import sys
 import os
+from ttkthemes import ThemedTk
 
 class Window:
     def __init__(self):
 
         #create and initilize the window
-        self.root = tk.Tk()
+        self.root = ThemedTk(theme='breeze')
         self.root.geometry('400x300')
         self.root.title('Contact-Maker')
 
@@ -43,10 +43,10 @@ class Window:
         self.root.iconphoto(False, tk.PhotoImage(file=icon_image))
 
 
-    def getInputFile(self):
+    def getInputFile(self) -> str:
         return self.input_file_path
     
-    def getOutputFile(self):
+    def getOutputFile(self) -> str:
         
         #prompt user to create the output filepath
         entry = tk.filedialog.asksaveasfilename(defaultextension='.vcf',
@@ -55,7 +55,7 @@ class Window:
 
         return self.output_file_path 
 
-    def setInputFilePath(self):
+    def setInputFilePath(self) -> None:
     
         self.input_file_path = filedialog.askopenfilename()
         if self.input_file_path:
@@ -70,7 +70,7 @@ class Window:
 
     #called whenever genFile is preshed
     #will genFile() and output a messagebox of the omitted names
-    def createOutput(self):
+    def createOutput(self) -> None:
         
         genFile(self.getOutputFile(), self.input_file_path)
 
@@ -87,7 +87,7 @@ class Window:
 
         self.is_file_generated = True
 
-    def showOmitLog(self, omit_log):
+    def showOmitLog(self, omit_log) -> None:
         #omit log comes in as a list of strings
         #need to change to all one string
         output = ''
@@ -96,11 +96,11 @@ class Window:
 
         tk.messagebox.showinfo('Omitted Names', output)
     
-    def shorten_path(self, path, num_parts=2):
+    def shorten_path(self, path, num_parts=2) -> str:
         parts = path.split(os.sep)
         shortened = os.sep.join(parts[-num_parts:])
         return shortened
 
-    def run(self):
+    def run(self) -> None:
         self.root.mainloop()
 

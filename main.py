@@ -1,9 +1,8 @@
 """
 
-Script to make the contact .vcf file
+Main file for contact-maker
+Launches the program 
 
-
-Last Updated: October 22, 2024
 Authors: Joe Scruppi
 
 """
