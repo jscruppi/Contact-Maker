@@ -7,13 +7,14 @@ A program designed to take the input of a google form and convert the responses 
 1. Before trying to download this program, a few prerequisites are required:
 - python          (any version newer than 3.0 should suffice)
 - git             (any version)
+- tkinter         (any version)
 
    To check for these porgrams, type the following commands into your terminal:
 
             python3 --version
             git --version
-
-   If you have these installed on your computer, a message should be displayed with your version information
+            pip list
+   If you have these installed on your computer, a message should be displayed with your version information. For tkinter, your version should appear in the "pip list" output
 
 2. Clone the Repository with the following terminal command:
     
@@ -38,11 +39,17 @@ In this current version of Contact-Maker, any phone numbers or birthdays not ent
 That being said, Contact-Maker requires this information to be stored in a .csv file. This can be done by downloading the google sheet linked to the google form as a .csv file.
 Note that the first kept record in a google form is the response time, Contact-Maker accounts for this in the code, so any attempts to remove the response time column will brick the program.
 
-To run Contact-Maker, type the following command into your project directory:
+To run Contact-Maker, you can either launch via the graphical interface or the command line interface. This is done based on the arguments provided at launch.
 
-        python3 main.py your-input-file-name.csv
+Launching the command line tool:
 
-Contact-Maker will write the results of the program to a .vcf file named "output.vcf". This file can be imported to any contact application that supports .vcf files (most do).
+        python3 main.py input.csv
+
+Launching the GUI:
+
+        python3 main.py
+
+Contact-Maker will write the results of the program to a .vcf file named "output.vcf" if you launched the command line tool, otherwise it will use the name you selected in the GUI.
 
 ## Contributing
 

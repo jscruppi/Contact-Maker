@@ -19,7 +19,7 @@ def main() -> None:
         #run the mainloop
         w.run()
     else:
-        contact_process.genFile(sys.argv[1], 'out/output.vcf')
+        contact_process.genFile(sys.argv[1], 'output.vcf')
 
         with open('data/omit_names.txt', mode='r') as err_log:
             print('Names not included in the file:')

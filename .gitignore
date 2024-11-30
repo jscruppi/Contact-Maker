@@ -10,5 +10,5 @@ omit_names.txt
 #ignore the pychace folder
 __pycache__/
 
-#ignore the out folder
-out/
+#ignore what is in the out folder
+out/*.*
